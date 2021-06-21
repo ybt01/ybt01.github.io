@@ -28,6 +28,6 @@
     "icons": [
       { "src": "icon/fox-icon.png", "sizes": "192x192" }
     ]
-  },
+  }
 ]
 }
