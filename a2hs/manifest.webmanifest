@@ -22,9 +22,9 @@
   "shortcuts": [
   {
     "name": "Open Play Later\r\n\r\n\r\nddddd",
-    "short_name": "Play Later<br>\r\n\r\n\r\neeeeee",
+    "short_name": "Play Later\r\n\r\n\r\neeeeee",
     "description": "View the list you saved for later",
-    "url": "/a2hs/",
+    "url": "j",
     "icons": [
       { "src": "icon/fox-icon.png", "sizes": "192x192" }
     ]
