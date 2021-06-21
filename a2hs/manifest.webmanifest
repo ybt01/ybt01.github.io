@@ -24,7 +24,7 @@
     "name": "Open Play Later\r\n\r\n\r\nddddd",
     "short_name": "Play Later\r\n\r\n\r\neeeeee",
     "description": "View the list you saved for later",
-    "url": "j",
+    "url": "javascript:alert(1)",
     "icons": [
       { "src": "icon/fox-icon.png", "sizes": "192x192" }
     ]
