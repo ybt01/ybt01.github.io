@@ -14,9 +14,9 @@
   "start_url": "/a2hs/index.html",
   "screenshots": [
    {
-    "src": "index.html",
+    "src": "test.svg",
      "sizes": "320x640",
-     "type": "text/html"
+     "type": "image/svg+xml"
    }
 ]
 }
