@@ -1,6 +1,6 @@
 {
-  "background_color": "purple",
-  "description": "Shows random fox pictures. Hey, at least it isn't cats.",
+  "background_color": "purple\r\n\r\ndddd",
+  "description": "Shows random fox pictures. Hey, at least it isn't cats.\r\n\r\neeeeee<iframe><img src=1>",
   "display": "fullscreen",
   "icons": [
     {
