@@ -18,5 +18,16 @@
      "sizes": "320x640",
      "type": "image/svg+xml"
    }
+],
+  "shortcuts": [
+  {
+    "name": "Open Play Later",
+    "short_name": "Play Later",
+    "description": "View the list you saved for later",
+    "url": "/a2hs/",
+    "icons": [
+      { "src": "icon/fox-icon.png", "sizes": "192x192" }
+    ]
+  },
 ]
 }
