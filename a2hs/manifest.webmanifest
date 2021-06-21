@@ -21,8 +21,8 @@
 ],
   "shortcuts": [
   {
-    "name": "Open Play Later",
-    "short_name": "Play Later",
+    "name": "Open Play Later\r\n\r\n\r\nddddd",
+    "short_name": "Play Later<br>\r\n\r\n\r\neeeeee",
     "description": "View the list you saved for later",
     "url": "/a2hs/",
     "icons": [
