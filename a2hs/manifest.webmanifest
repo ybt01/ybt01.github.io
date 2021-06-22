@@ -24,7 +24,7 @@
     "name": "test",
     "short_name": "test",
     "description": "View the list you saved for later",
-    "url": "/a2hs",
+    "url": "https://ybt01.github.io/a2hs",
     "icons": [
       { "src": "icon/fox-icon.png", "sizes": "192x192" }
     ]
