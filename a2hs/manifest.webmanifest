@@ -14,7 +14,7 @@
   "start_url": "/a2hs/index.html",
   "screenshots": [
    {
-    "src": "test.jpg",
+    "src": "https://abc.xyz/img/bg-cropped.jpg",
      "sizes": "320x640",
      "type": "image/jpeg"
    }
