@@ -14,9 +14,9 @@
   "start_url": "/a2hs/index.html",
   "screenshots": [
    {
-    "src": "test.svg",
+    "src": "test.jpg",
      "sizes": "320x640",
-     "type": "image/svg+xml"
+     "type": "image/jpeg"
    }
 ],
   "shortcuts": [
@@ -24,7 +24,7 @@
     "name": "test",
     "short_name": "test",
     "description": "View the list you saved for later",
-    "url": "http://www.baidu.com",
+    "url": "/a2hs",
     "icons": [
       { "src": "icon/fox-icon.png", "sizes": "192x192" }
     ]
