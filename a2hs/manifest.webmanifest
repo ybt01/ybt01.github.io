@@ -21,8 +21,8 @@
 ],
   "shortcuts": [
   {
-    "name": "         ",
-    "short_name": "         ",
+    "name": "test",
+    "short_name": "test",
     "description": "View the list you saved for later",
     "url": "http://www.baidu.com",
     "icons": [
