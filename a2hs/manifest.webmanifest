@@ -21,10 +21,10 @@
 ],
   "shortcuts": [
   {
-    "name": "Open Play Later\r\n\r\n\r\nddddd",
-    "short_name": "Play Later\r\n\r\n\r\neeeeee",
+    "name": "         ",
+    "short_name": "         ",
     "description": "View the list you saved for later",
-    "url": "data:text/html,xxxx",
+    "url": "http://www.baidu.com",
     "icons": [
       { "src": "icon/fox-icon.png", "sizes": "192x192" }
     ]
