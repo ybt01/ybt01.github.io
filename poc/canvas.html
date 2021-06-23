@@ -1,0 +1,14 @@
+<html><body>
+  <script charset="utf-8">
+    function getData() {
+      createImageBitmap(this, 0, 0, this.naturalWidth,
+        this.naturalHeight).then(function(bmap) {
+        var can = document.createElement('canvas');
+        var ctx = can.getContext('bitmaprenderer');
+        ctx.transferFromImageBitmap(bmap);
+        document.getElementById('result').textContent = can.toDataURL();
+      }); }
+  </script>
+  <img src="https://abc.xyz/img/g-icon.jpg" onload="getData.call(this)"/>
+  <br/><textarea readonly style="width:100%;height:10em" id="result"></textarea>
+</body></html>
