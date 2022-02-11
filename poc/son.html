@@ -1,1 +1,6 @@
-<iframe width=1500 allow="microphone" src="https://mdn.github.io/web-speech-api/speech-color-changer/"></iframe>
+<script>
+  html = '<iframe allow=\'microphone\' src=\'https://mdn.github.io/web-speech-api/speech-color-changer/\'></iframe>';
+blob = new Blob([html], {type: 'text/html'});
+  url = URL.createObjectURL(blob); 
+  window.open(url,"_self");
+</script>
