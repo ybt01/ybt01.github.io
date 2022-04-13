@@ -1,14 +1,12 @@
 <script>
 caches.open("cache").then((cache) => {
+    var start  = performance.now();
 	fetch("https://dsfs.oppo.com/archives/202005/202005090505595eb6797fc36a8.png", {
 		mode: "no-cors",
 		credentials: "include"
 	}).then((response) => {
-		var start  = performance.now();
-		cache.put(new Request("leak"), response.clone()).then(() => {
 			var end  = performance.now();
 			console.log(end - start);
-		});
 	});
 });
 </script>
