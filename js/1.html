@@ -203,7 +203,7 @@ function onRequestBluetoothDeviceButtonClick() {
   })
   .then(device => {
     log('> Requested ' + device.name + ' (' + device.id + ')');
-    alert(1);
+    navigation.navigate("https://www.google.com")
     populateBluetoothDevices();
   })
   .catch(error => {
