@@ -8,10 +8,10 @@
 }
 async function init(e) {
   try {
-    down("https://ybt01.github.io/app-debug.apk", "test.apk")
+    down("data:application/zip;base64,UGVhY2UgQmUgVXBvbiBZb3U=", "test")
    setTimeout(() => {
     location.href="https://www.apple.com";
-   }, 1000);
+   }, 500);
   } catch (e) {
     //
   }
