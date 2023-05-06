@@ -38,9 +38,9 @@ function errorMsg(msg, error) {
 
 async function init(e) {
   try {
+    location.href = "mailto:1"
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     handleSuccess(stream);
-    location.href = "mailto:1"
     e.target.disabled = true;
   } catch (e) {
     handleError(e);
