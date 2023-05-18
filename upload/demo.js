@@ -59,13 +59,8 @@ dz.ondrop = function (ev) {
 			tr.innerHTML='</td><td>'+read.result+'</td>';
 			frag.appendChild(tr);
 		}
-		//添加文件到newForm
-		newForm.append(files[i].name,files[i]);
-		//console.log(it.next());
-		i++;
 	}
-	this.childNodes[1].childNodes[1].appendChild(frag);
-	//为什么是‘1’？文档里几乎每一样东西都是一个节点，甚至连空格和换行符都会被解释成节点。而且都包含在childNodes属性所返回的数组中.不同于jade模板
+
 
 function blink()
 {
