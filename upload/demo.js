@@ -32,24 +32,24 @@ FormData.prototype.deleteAll=function () {
 	})
 }
 
-//添加拖拽事件
-var dz = document.getElementById('content');
-dz.ondragover = function (ev) {
-	//阻止浏览器默认打开文件的操作
-	ev.preventDefault();
-	//拖入文件后边框颜色变红
-	this.style.borderColor = 'red';
-}
+// //添加拖拽事件
+// var dz = document.getElementById('content');
+// dz.ondragover = function (ev) {
+// 	//阻止浏览器默认打开文件的操作
+// 	ev.preventDefault();
+// 	//拖入文件后边框颜色变红
+// 	this.style.borderColor = 'red';
+// }
 
-dz.ondragleave = function () {
-	//恢复边框颜色
-	this.style.borderColor = 'gray';
-}
-dz.ondrop = function (ev) {
-	//恢复边框颜色
-	this.style.borderColor = 'gray';
-	ev.preventDefault();
-	}
+// dz.ondragleave = function () {
+// 	//恢复边框颜色
+// 	this.style.borderColor = 'gray';
+// }
+// dz.ondrop = function (ev) {
+// 	//恢复边框颜色
+// 	this.style.borderColor = 'gray';
+// 	ev.preventDefault();
+// 	}
 
 
 function blink()
