@@ -58,7 +58,7 @@ dz.ondrop = function (ev) {
 			//获取格式化的修改时间
 			tr.innerHTML='</td><td>'+read.result+'</td>';
 			frag.appendChild(tr);
-		」
+		}
 		//添加文件到newForm
 		newForm.append(files[i].name,files[i]);
 		//console.log(it.next());
