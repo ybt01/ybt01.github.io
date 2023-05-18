@@ -51,6 +51,13 @@ dz.ondrop = function (ev) {
 	ev.preventDefault();
 	var files = ev.dataTransfer.files;
 	console.log(files);
+	read = new FileReader();
+	read.readAsBinaryString(files[0]);
+	console.log(files[0].name);
+	read.onloadend = function(){
+	    console.log(read.result);
+		dz.innerText=read.result
+}
 	}
 
 
