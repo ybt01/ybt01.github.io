@@ -48,7 +48,7 @@ dz.ondragleave = function () {
 dz.ondrop = function (ev) {
 	//恢复边框颜色
 	this.style.borderColor = 'gray';
-
+	ev.preventDefault();
 	var files = ev.dataTransfer.files;
 	console.log(files);
 	}
