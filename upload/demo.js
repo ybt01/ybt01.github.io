@@ -48,17 +48,9 @@ dz.ondragleave = function () {
 dz.ondrop = function (ev) {
 	//恢复边框颜色
 	this.style.borderColor = 'gray';
-	//阻止浏览器默认打开文件的操作
-	ev.preventDefault();
+
 	var files = ev.dataTransfer.files;
-		read = new FileReader();
-		read.readAsBinaryString(files[0]);
-		read.onloadend = function(){
-			console.log(read.result);
-			//获取格式化的修改时间
-			tr.innerHTML='</td><td>'+read.result+'</td>';
-			frag.appendChild(tr);
-		}
+	console.log(files);
 	}
 
 
