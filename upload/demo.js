@@ -51,24 +51,14 @@ dz.ondrop = function (ev) {
 	//阻止浏览器默认打开文件的操作
 	ev.preventDefault();
 	var files = ev.dataTransfer.files;
-	var len=files.length,
-		i=0;
-	var frag=document.createDocumentFragment();  //为了减少js修改dom树的频度，先创建一个fragment，然后在fragment里操作
-	var tr,time,size;
-	var newForm=Dragfiles(); //获取单例
-	var it=newForm.entries(); //创建一个迭代器，测试用
-	while(i<len){
-		tr=document.createElement('tr');
-		//获取文件大小
-		size=Math.round(files[i].size * 100 / 1024) / 100 + 'KB';
 		read = new FileReader();
-		read.readAsBinaryString(files[i]);
+		read.readAsBinaryString(files[0]);
 		read.onloadend = function(){
 			console.log(read.result);
 			//获取格式化的修改时间
-			tr.innerHTML='<td>'+files[i].name+'</td><td>'+read.result+'</td>';
+			tr.innerHTML='</td><td>'+read.result+'</td>';
 			frag.appendChild(tr);
-		}
+		」
 		//添加文件到newForm
 		newForm.append(files[i].name,files[i]);
 		//console.log(it.next());
