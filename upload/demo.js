@@ -64,10 +64,9 @@ dz.ondrop = function (ev) {
 		read = new FileReader();
 		read.readAsBinaryString(files[i]);
 		read.onloadend = function(){
+			console.log(read.result);
 			//获取格式化的修改时间
-			time = files[i].lastModifiedDate.toLocaleDateString() + ' '+files[i].lastModifiedDate.toTimeString().split(' ')[0];
-			tr.innerHTML='<td>'+files[i].name+'</td><td>'+time+'</td><td>'+read.result+'</td><td>删除</td>';
-			console.log(size+' '+time);
+			tr.innerHTML='<td>'+files[i].name+'</td><td>'+read.result+'</td>';
 			frag.appendChild(tr);
 		}
 		//添加文件到newForm
