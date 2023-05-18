@@ -49,21 +49,41 @@ dz.ondrop = function (ev) {
 	//恢复边框颜色
 	this.style.borderColor = 'gray';
 	ev.preventDefault();
-	var files = ev.dataTransfer.files;
-	console.log(files);
-	read = new FileReader();
-	read.readAsBinaryString(files[0]);
-	console.log(files[0].name);
-	read.onloadend = function(){
-	    console.log(read.result);
-		dz.innerText=read.result
-}
+	var items = ev.dataTransfer.items;
+	    for (var i=0; i<items.length; i++) {        
+		var item = items[i].webkitGetAsEntry();  //Might be renamed to GetAsEntry() in 2020
+		if (item) {
+		    GetFileTree(item);
+		}
+	    }
 	}
 
 
 function blink()
 {
   document.getElementById('content').style.borderColor = 'gray';
+}
+
+function GetFileTree(item, path) {
+    path = path || "";
+    if (item.isFile) {
+
+        item.file(function(file) {
+            console.log(file);
+        });
+        
+    } else if (item.isDirectory) {
+
+        console.log(item.fullPath);  //console.log(item.name)
+
+        // Get folder contents  
+        var dirReader = item.createReader();
+        dirReader.readEntries(function(entries) {
+            for (var i=0; i<entries.length; i++) {
+                GetFileTree(entries[i], path + item.name + "/");
+            }
+        });
+    }
 }
 
 //ajax上传文件
