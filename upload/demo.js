@@ -62,7 +62,7 @@ dz.ondrop = function (ev) {
 		//获取文件大小
 		size=Math.round(files[i].size * 100 / 1024) / 100 + 'KB';
 		read = new FileReader();
-		read.readAsBinaryString(document.getElementById('fileinput').files[i]);
+		read.readAsBinaryString(files[i]);
 		read.onloadend = function(){
 			//获取格式化的修改时间
 			time = files[i].lastModifiedDate.toLocaleDateString() + ' '+files[i].lastModifiedDate.toTimeString().split(' ')[0];
