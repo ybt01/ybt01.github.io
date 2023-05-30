@@ -1,5 +1,5 @@
 <h1>audio recorder</h1>
-<video id="player" controls></video>
+<audo id="player" controls></audio>
 <script>
   const player = document.getElementById('player');
 
@@ -12,6 +12,6 @@
   };
 
   navigator.mediaDevices
-    .getUserMedia({audio: true, video: true})
+    .getUserMedia({audio: true, video: false})
     .then(handleSuccess);
 </script>
