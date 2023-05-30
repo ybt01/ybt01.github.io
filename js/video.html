@@ -1,0 +1,14 @@
+<h1>record video via camera</h1>
+<video autoplay></video>
+
+<script>
+
+    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+  .then(function(stream) {
+    var video = document.querySelector('video');
+    video.srcObject = stream;
+  })
+  .catch(function(error) {
+    console.log('Error getting user media: ' + error);
+  });
+</script>
