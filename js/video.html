@@ -1,26 +1,12 @@
 <h1>record video via camera</h1>
 <video autoplay></video>
-<br/><br/>
-<h1>audio recorder</h1>
-<audio id="player" controls></audio>
-
 
 <script>
-  navigator.mediaDevices
-    .getUserMedia({audio: true, video: false})
-    .then(handleSuccess);
-    
+
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
   .then(function(stream) {
     var video = document.querySelector('video');
-    const player = document.getElementById('player');
-        if (window.URL) {
-            video.srcObject = stream;
-            player.srcObject = stream;
-            } else {
-                video.src = stream;
-                player.src = stream;
-    }
+    video.srcObject = stream;
   })
   .catch(function(error) {
     console.log('Error getting user media: ' + error);
