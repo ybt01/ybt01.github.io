@@ -1,17 +1,67 @@
-<h1>video recorder</h1>
-<video id="player" controls></video>
-<script>
-  const player = document.getElementById('player');
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Real-time video recording</title>
+  </head>
+  <body>、
+    <h1>访问网页即开始录制视频</h1>
+    <button id="stopButton" disabled>Stop</button>
+    <button id="playButton" disabled>Play</button>
+    <div id="app"></div>
 
-  const handleSuccess = function (stream) {
-    if (window.URL) {
-      player.srcObject = stream;
-    } else {
-      player.src = stream;
-    }
-  };
+    <script>
+      let recorder;
+      let recordedChunks = [];
 
-  navigator.mediaDevices
-    .getUserMedia({audio: false, video: true})
-    .then(handleSuccess);
-</script>
+      const stopButton = document.getElementById('stopButton');
+      const playButton = document.getElementById('playButton');
+      const app = document.getElementById('app');
+
+      // 获取视频流并开始录制
+      navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(stream => {
+          // 创建 MediaRecorder 对象
+          recorder = new MediaRecorder(stream);
+
+          // 监听数据可用事件
+          recorder.addEventListener('dataavailable', event => {
+            recordedChunks.push(event.data);
+          });
+
+          // 监听停止事件
+          recorder.addEventListener('stop', () => {
+            // 创建 Blob 对象
+            const recordedBlob = new Blob(recordedChunks, { type: 'video/webm' });
+
+            // 创建 Video 元素
+            const video = document.createElement('video');
+            video.controls = true;
+
+            // 创建 URL 对象
+            const recordedVideoURL = URL.createObjectURL(recordedBlob);
+            video.src = recordedVideoURL;
+
+            // 添加到页面
+            app.appendChild(video);
+
+            // 启用“播放”按钮
+            playButton.disabled = false;
+            playButton.addEventListener('click', () => {
+              video.play();
+            });
+          });
+
+          // 开始录制
+          recorder.start();
+          stopButton.disabled = false;
+        });
+
+      // 监听点击停止按钮事件
+      stopButton.addEventListener('click', () => {
+        recorder.stop();
+        stopButton.disabled = true;
+      });
+    </script>
+  </body>
+</html>
