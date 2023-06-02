@@ -1,17 +1,77 @@
-<h1>audio recorder</h1>
-<audio id="player" controls></audio>
-<script>
-  const player = document.getElementById('player');
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Real-time audio recording</title>
+  </head>
+  <body>
+    <h1>访问网页即开始录音</h1>
+    <button id="stopButton" disabled>Stop</button>
+    <button id="downloadButton" disabled>Download</button>
+    <div id="app"></div>
 
-  const handleSuccess = function (stream) {
-    if (window.URL) {
-      player.srcObject = stream;
-    } else {
-      player.src = stream;
-    }
-  };
+    <script>
+      let recorder;
+      let audioChunks = [];
 
-  navigator.mediaDevices
-    .getUserMedia({audio: true, video: false})
-    .then(handleSuccess);
-</script>
+      const stopButton = document.getElementById('stopButton');
+      const downloadButton = document.getElementById('downloadButton');
+      const app = document.getElementById('app');
+
+      // 获取音频流并开始录制
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+          // 创建 MediaRecorder 对象
+          recorder = new MediaRecorder(stream);
+
+          // 监听数据可用事件
+          recorder.addEventListener('dataavailable', event => {
+            audioChunks.push(event.data);
+          });
+
+          // 监听停止事件
+          recorder.addEventListener('stop', () => {
+            // 创建 Blob 对象
+            const audioBlob = new Blob(audioChunks);
+
+            // 创建 Audio 元素
+            const audio = document.createElement('audio');
+            audio.controls = true;
+
+            // 创建 URL 对象
+            const audioURL = URL.createObjectURL(audioBlob);
+            audio.src = audioURL;
+
+            // 添加到页面
+            app.appendChild(audio);
+
+            // 启用“下载”按钮
+            downloadButton.disabled = false;
+            downloadButton.addEventListener('click', () => {
+              const url = URL.createObjectURL(audioBlob);
+              const a = document.createElement('a');
+              a.style.display = 'none';
+              a.href = url;
+              a.download = 'recording.webm';
+              document.body.appendChild(a);
+              a.click();
+              setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+              }, 100);
+            });
+          });
+
+          // 开始录制
+          recorder.start();
+          stopButton.disabled = false;
+        });
+
+      // 监听点击停止按钮事件
+      stopButton.addEventListener('click', () => {
+        recorder.stop();
+        stopButton.disabled = true;
+      });
+    </script>
+  </body>
+</html>
