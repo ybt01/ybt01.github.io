@@ -48,17 +48,21 @@
             // 启用“下载”按钮
             downloadButton.disabled = false;
             downloadButton.addEventListener('click', () => {
-              const url = URL.createObjectURL(audioBlob);
-              const a = document.createElement('a');
-              a.style.display = 'none';
-              a.href = url;
-              a.download = 'recording.webm';
-              document.body.appendChild(a);
-              a.click();
-              setTimeout(() => {
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-              }, 10000);
+              if (navigator.msSaveOrOpenBlob) {
+                navigator.msSaveOrOpenBlob(audioBlob, 'recording.webm');
+              } else {
+                const url = URL.createObjectURL(audioBlob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'recording.webm';
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => {
+                  document.body.removeChild(a);
+                  URL.revokeObjectURL(url);
+                }, 100);
+              }
             });
           });
 
