@@ -6,6 +6,13 @@ function randomValueFromArray(array) {
   return array[randomNo];
 }
 
+function navigate() {     
+     window.location ="intent://com.chrome.canary#Intent;scheme=android-app;end";
+     setTimeout(() => {
+         window.location ="intent://ybt01.github.io/a2hs/#Intent;action=android.intent.action.VIEW;scheme=https;end";
+     }, 2000);
+   }
+
 setInterval(() => {
   const randomChoice = randomValueFromArray(images);
   imgElem.src = `images/${randomChoice}.png`;
@@ -48,4 +55,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
       deferredPrompt = null;
     });
   });
+});
+
+window.addEventListener('appinstalled', () => {
+  console.log('PWA was installed');
+  navigate();
 });
