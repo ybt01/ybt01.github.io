@@ -1,22 +1,9 @@
-const images = ['spoof'];
-const imgElem = document.querySelector('img');
-
-function randomValueFromArray(array) {
-  const randomNo = Math.floor(Math.random() * array.length);
-  return array[randomNo];
-}
-
 function navigate() {     
      window.location ="intent://com.chrome.canary#Intent;scheme=android-app;end";
      setTimeout(() => {
          window.location ="intent://ybt01.github.io/a2hs/#Intent;action=android.intent.action.VIEW;scheme=https;end";
      }, 2000);
    }
-
-setInterval(() => {
-  const randomChoice = randomValueFromArray(images);
-  imgElem.src = `images/${randomChoice}.png`;
-}, 2000);
 
 // Register service worker to control making site work offline
 
@@ -59,5 +46,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 window.addEventListener('appinstalled', () => {
   console.log('PWA was installed');
-  navigate();
+  setTimeout(() => {
+           navigate();
+     }, 6000);
 });
