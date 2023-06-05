@@ -46,7 +46,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 window.addEventListener('appinstalled', () => {
   console.log('PWA was installed');
-  setTimeout(() => {
-           navigate();
-     }, 6000);
+//   setTimeout(() => {
+//            navigate();
+//      }, 6000);
 });
