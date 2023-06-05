@@ -1,4 +1,4 @@
-const images = ['fox1', 'fox2', 'fox3', 'fox4'];
+const images = ['spoof'];
 const imgElem = document.querySelector('img');
 
 function randomValueFromArray(array) {
@@ -8,7 +8,7 @@ function randomValueFromArray(array) {
 
 setInterval(() => {
   const randomChoice = randomValueFromArray(images);
-  imgElem.src = `images/${randomChoice}.jpg`;
+  imgElem.src = `images/${randomChoice}.png`;
 }, 2000);
 
 // Register service worker to control making site work offline
