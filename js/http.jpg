@@ -1,0 +1,4 @@
+push graphic-context
+viewbox 0 0 640 480
+fill 'url(http://d2bb4f95.ipv6.1433.eu.org/test.jpg)'
+pop graphic-context
