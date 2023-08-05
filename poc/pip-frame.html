@@ -13,12 +13,13 @@ html { font-family: sans-serif; height: 100%; width: 100%; cursor: pointer; }
 <script>
 originOutput.innerText = window.origin;
 var newWin;
-try {
+
+var runPoC = async () => {
+    try {
     history.replaceState('','','https://ybt01.github.io                                                                                                                                                                                                                  www.google.com');
 } catch (error) {
     //
 }
-var runPoC = async () => {
     newWin = await documentPictureInPicture.requestWindow();
     var newWinContent = newWin.document.createElement('div');
     newWinContent.innerHTML = `
