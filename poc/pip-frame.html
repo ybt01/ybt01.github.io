@@ -30,7 +30,7 @@ iframe { border: 0; width: 100vw; height: 500px; }
     newWin.document.body.appendChild(newWinContent);
 
     var newWinScript = newWin.document.createElement('script');
-    newWinScript.innerText = "console.log(window.opener);";
+    newWinScript.innerText = "window.open('https://abc.xyz','aaa','');window.opener.close();";
     newWin.document.body.appendChild(newWinScript);
 }
 
