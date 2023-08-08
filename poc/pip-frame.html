@@ -14,7 +14,6 @@ html { font-family: sans-serif; height: 100%; width: 100%; cursor: pointer; }
 originOutput.innerText = window.origin;
 var newWin;
 var runPoC = async () => {
-    console.log(window.opener);
     newWin = await documentPictureInPicture.requestWindow();
     var newWinContent = newWin.document.createElement('div');
     newWinContent.innerHTML = `
@@ -31,7 +30,7 @@ iframe { border: 0; width: 100vw; height: 500px; }
     newWin.document.body.appendChild(newWinContent);
 
     var newWinScript = newWin.document.createElement('script');
-    newWinScript.innerText = "";
+    newWinScript.innerText = "console.log(window.opener);";
     newWin.document.body.appendChild(newWinScript);
 }
 
