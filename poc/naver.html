@@ -1,0 +1,7 @@
+<script>
+    alert(JSON.stringify(nidapi));
+    nidapi.getPhoneNumber(); window.onload = function(){
+window.addEventListener("usimPhoneNo", function(e){
+var data = JSON.stringify(e.detail); setTimeout(alert(data),5000); setTimeout(alert(e.detail.phoneNumber),5000); },false);
+}
+    </script>
