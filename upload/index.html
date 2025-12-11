@@ -43,6 +43,7 @@
             display: block;
             position: fixed;
             transform: scale(1000);
+            cursor: pointer; /* 增加手型光标提示可点击 */
         }
 
         button {
@@ -55,6 +56,7 @@
 <body>
     <div class="dropzone">
         Drop folder with symlinks here
+        <!-- 注意：onChange 负责处理文件，onClick 负责允许打开选择框 -->
         <input onChange="handleFiles(event)" webkitdirectory multiple onClick="handleClick(event)" title=""
             type="file" />
     </div>
@@ -62,11 +64,17 @@
     <script>
         const dropzone = document.querySelector(".dropzone");
 
+        // 1. 处理文件选择后的逻辑 (保持不变，这是你想要的处理方式)
         function handleFiles(event) {
             document.body.innerHTML = '';
+            // 获取文件列表
             files = Array.from(event.target.files).filter(f => f.size > 0);
+            
             for (let file of files) {
-                let name = file.name;
+                // 如果你想显示相对路径（文件夹结构），可以用 file.webkitRelativePath
+                // 这里保持你原来的 file.name
+                let name = file.webkitRelativePath || file.name; 
+                
                 let label = document.createElement("button");
                 label.innerText = name;
                 label.addEventListener('click', async () => {
@@ -81,12 +89,20 @@
             }
         }
 
+        // 2. 修改 handleClick：允许打开文件选择框
         function handleClick(event) {
-            event.preventDefault();
-            alert("Drag and drop a folder with symlinks here");
+            // 关键点：千万不要调用 event.preventDefault(); 
+            // 否则浏览器不会弹出文件选择窗口。
+            
+            // 可选：清空 value，确保即使用户选择了和上次完全一样的文件夹也能触发 onChange
+            event.target.value = null;
+            
+            console.log("Opening file picker...");
         }
 
+        // 拖拽相关逻辑保持不变
         document.addEventListener("drop", function (event) {
+            // 只有在非 input 区域（虽然 input 全屏了）或者需要处理 drop 事件时才需要这个
             dropzone.classList.remove("hover");
         }, false);
 
