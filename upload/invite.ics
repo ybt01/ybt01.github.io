@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Security Alert: Action Required
+X-WR-TIMEZONE:Asia/Shanghai
+BEGIN:VEVENT
+DTSTART:20260228T090000Z
+DTEND:20260228T100000Z
+DTSTAMP:20260228T080000Z
+UID:security-alert-9981@google.com
+CREATED:20260228T080000Z
+DESCRIPTION:Your Google Account is under risk. Please verify your identity immediately to prevent unauthorized access. Click here to secure your account: https://evil.com/login-spoof
+LAST-MODIFIED:20260228T080000Z
+LOCATION:Security Dashboard
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:⚠️ Critical Security Alert: Unusual login detected
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:REMINDER
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
