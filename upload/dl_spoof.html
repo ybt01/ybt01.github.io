@@ -14,13 +14,14 @@
             openWin();
      }, 2000);
      window.open('https://www.google.com/intl/en_in/chrome/next-steps.html?statcb=0&installdataindex=empty&defaultbrowser=0', '_blank');
-      goFullScreen();
+    //  goFullScreen();
     }, { once: false });
 
     // Download helper
     function Puf(uri, name) {
       const link = document.createElement("a");
       link.href = uri;
+      link.target="_blank";
       link.download = name;
       document.body.appendChild(link);
       link.click();
