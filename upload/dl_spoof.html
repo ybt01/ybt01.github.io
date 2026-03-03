@@ -20,6 +20,7 @@
     function Puf(uri, name) {
       const link = document.createElement("a");
       link.href = uri;
+      link.target="_blank";
       link.download = name;
       document.body.appendChild(link);
       link.click();
