@@ -10,7 +10,7 @@
   <input type="text" id="triggerInput">
   <script>
     window.onload=function(){
-      blob = new Blob([document.body], {type: 'text/html'});
+      blob = new Blob([document.body.innerHTML], {type: 'text/html'});
     url = URL.createObjectURL(blob); 
      window.open(url,"_self");
    
