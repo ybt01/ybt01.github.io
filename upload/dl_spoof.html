@@ -6,10 +6,8 @@
   <title>Download & Fullscreen on Keypress</title>
   <script>
      window.onload=function(){
-      blob = new Blob([document.body.innerHTML], {type: 'text/html'});
-    url = URL.createObjectURL(blob); 
-     window.open(url,"_self");
-   
+     var x = window.open("about:blank","_self");
+      x.document.write(document.body.innerHTML);
     }</script>
 </head>
 <body>
