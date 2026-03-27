@@ -1,9 +1,0 @@
-<script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
-<script>
-  // VConsole will be exported to `window.VConsole` by default.
-  var vConsole = new window.VConsole();
-document.ready=function(){
-  const RainbowBridge = {onComplete: console.log.bind(console)}
-android.callCommonMethod("rainbow://JSCommondMethod:9002/getToken?{}")
-}
-</script>
