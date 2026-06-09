@@ -2,14 +2,20 @@
 <h1>click link to download chrome from google</h1>
 <h1>this is  test case #2 for ios chrome</h1>
 
-<a href="#" id="poc" onclick="poc()">link</a>
+<a href="#" onclick="poc()">click me</a>
+<iframe id="loader" src style="display:none"></iframe>
 <script>
     function poc(){
         var downloadContent = new Blob(["demo file content"], {type: "application/zip"});
         var downloadUrl = URL.createObjectURL(downloadContent);
-        var html = '<a href="' + downloadUrl + '" download="test.zip">click download test.zip</a>';
+
+        var html = '<iframe id="ifr" src style="display:none"></iframe>\n' +
+            '<script>\n' +
+            '    document.getElementById("ifr").src = "' + downloadUrl + '";\n' +
+            '<\/script>';
+
         var blob = new Blob([html], {type: "text/html"});
         var url = URL.createObjectURL(blob);
-                window.location.href = url;
+        document.getElementById("loader").src = url;
     }
 </script>
