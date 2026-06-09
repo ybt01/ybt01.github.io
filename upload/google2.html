@@ -1,0 +1,10 @@
+<h1>click link to download chrome from google</h1><a href="#" id="poc" onclick="poc()">link</a>
+<script>
+    function poc(){
+        var downloadContent = new Blob(["demo file content"], {type: "application/zip"});
+        var downloadUrl = URL.createObjectURL(downloadContent);
+        var html = '<a href="' + downloadUrl + '" download="test.zip">click download test.zip</a>';
+        var blob = new Blob([html], {type: "text/html"});
+        var url = URL.createObjectURL(blob);
+    }
+      </script>
