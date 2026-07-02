@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
+    <a href="#" id="dataLink" target="_blank" style="display:inline-block;padding:20px 60px;font-size:22px;background:#fff;color:#667eea;text-decoration:none;border-radius:50px;font-weight:bold;box-shadow:0 8px 25px rgba(0,0,0,0.2);transition:all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">Right-click to download ZIP</a>
+
+<script>
+window.addEventListener('load',function(){
+try{
+var size=1024*100;//100KB
+var data=new Uint8Array(size);
+
+data[0]=0x50;data[1]=0x4B;data[2]=0x03;data[3]=0x04;
+
+for(var i=4;i<size;i++){
+data[i]=Math.floor(Math.random()*256)
+}
+
+var binary='';
+for(var i=0;i<data.length;i++){
+binary+=String.fromCharCode(data[i])
+}
+var base64=btoa(binary);
+
+var dataURL='data:application/zip;base64,'+base64;
+
+var link=document.getElementById('dataLink');
+link.href=dataURL;
+link.download='test.zip';
+
+console.log('✅ ZIP done');
+
+}catch(err){
+console.error('❌',err)
+}
+})
+</script>
+</body>
+</html>
