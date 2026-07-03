@@ -1,0 +1,14 @@
+<script>
+    function next() {
+        location.href ="tel:1111";
+     
+
+document.getElementById("link").removeAttribute("onclick");
+    }
+    function f() {
+        setTimeout(() => { next() }, 1000);
+    }
+</script>
+
+<a href="https://apple.com:23333" onclick="f()" id="link">click me</a>
+
