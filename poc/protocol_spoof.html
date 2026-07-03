@@ -1,9 +1,11 @@
 <script>
     function next() {
-        location.href ="tel://1111";
-     
+        location.href ="tel:1111";
+        document.getElementById("link").remove();
 
-document.getElementById("link").removeAttribute("onclick");
+        const h1 = document.createElement("h1");
+        h1.textContent = "just make the call!";
+        document.body.appendChild(h1);
     }
     function f() {
         setTimeout(() => { next() }, 1000);
